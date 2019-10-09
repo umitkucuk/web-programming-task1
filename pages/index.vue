@@ -37,6 +37,43 @@
       <section>
         <el-row :gutter="20">
           <el-col :span="24">
+            <div class="animals">
+              <div class="animals-video-context">
+                <h4 style="font-size: 14px; color: #fff; margin-bottom: 20px;">KARŞINIZDA</h4>
+                <h1 style="font-size: 48px; color: #fff">Hayvanlar</h1>
+                <h4
+                  style="font-size: 18px; font-weight: 400; color: #fff; margin-bottom: 40px;"
+                >Airbnb Deneyimleri'nde</h4>
+                <button class="white">Daha fazla bilgi edinin</button>
+              </div>
+              <video
+                class="animals-video"
+                autoplay
+                controlslist="nodownload"
+                crossorigin="anonymous"
+                loop
+                playsinline
+                preload="metadata"
+                style="object-fit: cover;"
+              >
+                <source
+                  id="mp4"
+                  src="https://a0.muscache.com/v/c8/44/c84447fb-f877-54ba-8ab4-96c5823da807/c84447fbf87754ba8ab496c5823da807_1000k_1.mp4?imformat=h265"
+                  type="video/mp4; codecs=hevc"
+                />
+                <source
+                  id="mp4"
+                  src="https://a0.muscache.com/v/c8/44/c84447fb-f877-54ba-8ab4-96c5823da807/c84447fbf87754ba8ab496c5823da807_1000k_1.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          </el-col>
+        </el-row>
+      </section>
+      <section>
+        <el-row :gutter="20">
+          <el-col :span="24">
             <h3>Dünya genelinde konaklama yerleri</h3>
           </el-col>
 
@@ -88,6 +125,23 @@ a.explore {
     width: 96px;
     height: 72px;
     margin-right: 20px;
+  }
+}
+
+.animals {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+  border-radius: 16px;
+
+  .animals-video-context {
+    position: absolute;
+    top: 100px;
+    left: 80px;
+    z-index: 10;
+  }
+  .animals-video {
+    width: 100%;
   }
 }
 </style>

@@ -41,7 +41,7 @@ a {
 }
 
 section {
-  margin: 20px 0 30px 0;
+  margin: 50px 0;
 }
 
 h1,
@@ -125,6 +125,11 @@ button {
     &:active {
       background-color: #df3c47;
     }
+  }
+
+  &.white {
+    color: rgb(72, 72, 72);
+    background-color: #fff;
   }
 }
 
