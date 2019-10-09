@@ -40,6 +40,10 @@ a {
   text-decoration: none;
 }
 
+section {
+  margin: 20px 0 30px 0;
+}
+
 h1,
 h2,
 h3,
