@@ -63,6 +63,16 @@ h3 {
   margin-bottom: 15px;
 }
 
+h4 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
 input {
   padding: 12px;
   border: 1px solid #ebebeb;
