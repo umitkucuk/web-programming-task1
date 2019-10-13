@@ -74,6 +74,17 @@
       <section>
         <el-row :gutter="20">
           <el-col :span="24">
+            <h3>Sizin için önerilenler</h3>
+          </el-col>
+
+          <el-col v-for="(recommend, index) in recommends" :key="index" :span="6">
+            <recommend :data="recommend" />
+          </el-col>
+        </el-row>
+      </section>
+      <section>
+        <el-row :gutter="20">
+          <el-col :span="24">
             <h3>Dünya genelinde konaklama yerleri</h3>
           </el-col>
 
@@ -89,21 +100,37 @@
 <script>
 import Hero from '~/components/Hero.vue'
 import Place from '~/components/Place.vue'
+import Recommend from '~~/components/Recommend'
 
+import recommends from '~/static/recommends.json'
 import places from '~/static/places.json'
 
 export default {
   components: {
     Hero,
-    Place
+    Place,
+    Recommend
+  },
+  mounted() {
+    this.scroll()
   },
   data() {
     return {
-      places
+      places: places,
+      recommends
     }
   },
-  created() {
-    console.log(this.places)
+  methods: {
+    scroll() {
+      window.onscroll = () => {
+        let bottomOfWindow =
+          document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight
+
+        if (bottomOfWindow) {
+          this.places = this.places.concat(places)
+        }
+      }
+    }
   }
 }
 </script>
@@ -113,9 +140,8 @@ a.explore {
   display: flex;
   align-items: center;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px;
-  border: 1px solid #e5e5e5;
-  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  border-radius: 8px;
   overflow: hidden;
   background-color: #fff;
   color: rgb(72, 72, 72);

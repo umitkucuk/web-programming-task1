@@ -44,6 +44,7 @@ export default {
 
 <style lang="scss" scoped>
 .place {
+  margin-bottom: 20px;
   img {
     width: 100%;
     border-radius: 4px;
