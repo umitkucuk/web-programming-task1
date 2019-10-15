@@ -100,7 +100,7 @@
 <script>
 import Hero from '~/components/Hero.vue'
 import Place from '~/components/Place.vue'
-import Recommend from '~~/components/Recommend'
+import Recommend from '~/components/Recommend'
 
 import recommends from '~/static/recommends.json'
 import places from '~/static/places.json'
