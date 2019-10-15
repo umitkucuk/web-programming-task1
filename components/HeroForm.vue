@@ -16,8 +16,8 @@
               v-model="dates"
               type="daterange"
               range-separator="-"
-              start-placeholder="Giriş tarihi"
-              end-placeholder="Çıkış tarihi"
+              start-placeholder="gg.aa.yyyy"
+              end-placeholder="gg.aa.yyyy"
               style="width: 100%"
             />
           </div>
