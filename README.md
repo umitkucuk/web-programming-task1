@@ -1,14 +1,15 @@
 ## Web Programlama 1. Ödev
 
 ### Projeyi Çalıştırma
-##### Npm paketlerini yükle
+##### 1. Npm paketlerini yükle
  ```bash
  npm install
  ```
- ##### Projeyi Development Mod'da çalıştır
+ ##### 2. Projeyi çalıştır
  ```bash
  npm run dev
  ```
+  ##### 2. Projeye tarayıcıda eriş `localhost:3000`
 
 
 ### Advanced Özellikler:
