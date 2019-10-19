@@ -9,7 +9,7 @@
  ```bash
  npm run dev
  ```
-  ##### 2. Projeye tarayıcıda eriş `localhost:3000`
+  ##### 3. Projeye tarayıcıda eriş `localhost:3000`
 
 
 ### Advanced Özellikler:
