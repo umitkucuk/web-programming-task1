@@ -7,7 +7,7 @@
  ```
  ##### Projeyi Development Mod'da çalıştır
  ```bash
- npm run start
+ npm run dev
  ```
 
 
