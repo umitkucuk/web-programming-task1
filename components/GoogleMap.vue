@@ -33,6 +33,7 @@ export default {
 
   .map-actions {
     position: relative;
+    width: 100%;
     display: block;
 
     .motion {
@@ -42,27 +43,28 @@ export default {
       background-color: #fff;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 8px;
       padding: 10px;
-      border-radius: 10px;
+      border-radius: 8px;
     }
    
     .zoom {
       position: absolute;
       top: 20px;
-      right: 120px;
+      right: 180px;
       color: #555;
       background-color: #fff;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 8px;
-      border-radius: 10px;
+      border-radius: 8px;
       z-index: 100;
       width: 40px;
       font-size: 30px;
       font-weight: 400;
-      padding: 5px;
+      padding: 4px;
 
       span {
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
 
         &:first-of-type {
           border-bottom: 1px solid #efefef;

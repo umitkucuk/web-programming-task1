@@ -23,15 +23,15 @@
     </div>
     <template>
       <section class="results">
-        <div class="container" style="padding-right: 0">
+        <div class="container">
           <el-row :gutter="20">
-            <el-col :span="12">
+            <el-col :span="13">
               <h3 style="border-bottom: 1px solid #efefef; padding-bottom: 20px; margin-top: 30px">+300 konaklama yeri</h3>
               <div v-for="(place, index) in places" :key="index">
                 <place :data="place" wide />
               </div>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="11">
               <google-map />
             </el-col>
           </el-row>
