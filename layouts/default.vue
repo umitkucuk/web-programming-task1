@@ -37,6 +37,10 @@ body {
 
 a {
   text-decoration: none;
+
+  &:visited {
+    color: #fff;
+  }
 }
 
 section {

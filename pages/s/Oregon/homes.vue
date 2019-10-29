@@ -16,7 +16,6 @@
         Haritayı göster
         <el-switch
           v-model="showMap"
-          active-color="#008489"
           inactive-color="#b0b0b0">
         </el-switch>
       </div>
