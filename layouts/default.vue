@@ -130,6 +130,15 @@ button {
     }
   }
 
+  &.secondary {
+    color: #fff;
+    background-color: #008489;
+
+    &:active {
+      background-color: #008489;
+    }
+  }
+
   &.white {
     color: rgb(72, 72, 72);
     background-color: #fff;
@@ -141,6 +150,21 @@ button {
   max-width: 1600px;
   display: block;
   padding: 0 15px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #efefef;
+}
+
+.link {
+  color: #008489;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 *,

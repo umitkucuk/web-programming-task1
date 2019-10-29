@@ -1,4 +1,5 @@
 <template>
+<div>
   <header :class="{homepage: isHomePage}">
     <el-row>
       <el-col :span="12">
@@ -34,23 +35,89 @@
               <a href="#">Ev sahibi olun</a>
             </li>
             <li>
-              <a href="#">Yardım</a>
+              <a @click="helpActive = true" href="#">Yardım</a>
             </li>
             <li>
-              <a href="#">Kaydol</a>
+              <a @click="registerModal = true" href="#">Kaydol</a>
             </li>
             <li>
-              <a href="#">Giriş yapın</a>
+              <a @click="loginModal = true" href="#">Giriş yapın</a>
             </li>
           </ul>
         </nav>
       </el-col>
     </el-row>
   </header>
+
+  <help-modal v-if="helpActive" @close="helpActive = false" />
+
+  <el-dialog
+    :visible.sync="registerModal"
+    width="40%">
+    <div class="login-form">
+      <div class="input-block">
+        <social-login />
+        <div style="text-align: center; margin-bottom: 15px;">
+          veya
+        </div>
+        <el-form>
+          <el-form-item>
+            <button type="button" class="primary" style="width: 100%">E-posta ile Kaydolun</button>
+          </el-form-item>
+          <div class="divider"></div>
+          <div style="font-size: 18px; margin-top: 15px;">
+            Zaten bir Airbnb hesabınız mı var? <a class="link" @click="registerModal = false; loginModal = true">Giriş yapın</a>
+          </div>
+        </el-form>
+      </div>
+    </div>
+  </el-dialog>
+
+  <el-dialog
+    :visible.sync="loginModal"
+    width="40%">
+    <div class="login-form">
+      <div class="input-block">
+        <social-login />
+        <div style="text-align: center; margin-bottom: 15px;">
+          veya
+        </div>
+        <el-form>
+          <el-form-item>
+            <el-input placeholder="E-posta adresi" v-model="login.email" suffix-icon="el-icon-message" />
+          </el-form-item>
+          <el-form-item>
+            <el-input placeholder="Parola" v-model="login.password" suffix-icon="el-icon-lock" />
+          </el-form-item>
+          <el-row :gutter="15" style="margin-bottom: 15px">
+            <el-col :span="12">
+              <el-checkbox label="Beni hatırla" name="type"></el-checkbox>
+            </el-col>
+            <el-col :span="12">
+              <span class="link" style="float: right">Parolayı göster</span>
+            </el-col>
+          </el-row>
+          <el-form-item>
+            <button type="button" class="primary" style="width: 100%">Giriş yapın</button>
+          </el-form-item>
+          <div style="text-align: center; margin-bottom: 15px;">
+            <a class="link">Parolanızı mı unuttunuz?</a>
+          </div>
+          <div class="divider"></div>
+          <div style="font-size: 18px; margin-top: 15px;">
+            Hesabınız mı yok? <a class="link" @click="loginModal = false; registerModal = true">Kaydolun</a>
+          </div>
+        </el-form>
+      </div>
+    </div>
+  </el-dialog>
+</div>
 </template>
 
 <script>
 import Search from '~/components/Search.vue'
+import SocialLogin from '~/components/SocialLogin.vue'
+import HelpModal from '~/components/HelpModal.vue'
 
 export default {
   props: {
@@ -64,7 +131,20 @@ export default {
     }
   },
   components: {
-    Search
+    Search,
+    HelpModal,
+    SocialLogin,
+  },
+  data () {
+    return {
+      loginModal: false,
+      registerModal: false,
+      helpActive: false,
+      login: {
+        email: '',
+        passowrd: ''
+      }
+    }
   }
 }
 </script>
