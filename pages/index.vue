@@ -77,7 +77,6 @@
           <el-col :span="24">
             <h3>Sizin için önerilenler</h3>
           </el-col>
-
           <el-col v-for="(recommend, index) in recommends" :key="index" :span="6">
             <recommend :data="recommend" />
           </el-col>

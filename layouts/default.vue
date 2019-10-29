@@ -176,6 +176,6 @@ button {
 
 .el-carousel__arrow {
   background-color: #fff !important;
-  color: #000;
+  color: #000 !important;
 }
 </style>
