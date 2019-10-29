@@ -1,5 +1,6 @@
 <template>
   <div>
+    <navigation isHomePage />
     <hero />
     <div class="container">
       <section>
@@ -98,6 +99,7 @@
 </template>
 
 <script>
+import Navigation from '~/components/Navigation.vue'
 import Hero from '~/components/Hero.vue'
 import Place from '~/components/Place.vue'
 import Recommend from '~/components/Recommend'
@@ -107,6 +109,7 @@ import places from '~/static/places.json'
 
 export default {
   components: {
+    Navigation,
     Hero,
     Place,
     Recommend

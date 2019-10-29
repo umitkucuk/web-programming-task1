@@ -1,6 +1,5 @@
 <template>
   <div>
-    <navigation />
     <nuxt />
     <footer-section />
   </div>
@@ -137,6 +136,7 @@ button {
   margin: 0 auto;
   max-width: 1600px;
   display: block;
+  padding: 0 15px;
 }
 
 *,
@@ -144,5 +144,10 @@ button {
 *:after {
   box-sizing: border-box;
   margin: 0;
+}
+
+.el-carousel__arrow {
+  background-color: #fff !important;
+  color: #000;
 }
 </style>

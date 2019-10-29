@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :class="{homepage: isHomePage}">
     <el-row>
       <el-col :span="12">
         <a href="#" class="logo">
@@ -21,11 +21,14 @@
       <el-col :span="12">
         <nav>
           <ul>
-            <li>
+            <li v-if="isHomePage">
               <a href="#">Bir evde ev sahipliği yapma</a>
             </li>
-            <li>
+            <li v-if="isHomePage">
               <a href="#">Bir deneyim için ev sahipliği yapın</a>
+            </li>
+            <li v-if="!isHomePage">
+              <a href="#">Ev sahibi olun</a>
             </li>
             <li>
               <a href="#">Yardım</a>
@@ -44,23 +47,44 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    isHomePage: {
+      default: false,
+      type: Boolean
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 header {
-  position: absolute;
+  position: fixed;
   top: 0;
-  right: 0;
-  left: 0;
   width: 100%;
+  background-color: #fff;
   z-index: 10;
+  border-bottom: 1px solid rgb(228, 228, 228);
+
+  &.homepage {
+    position: absolute;
+    right: 0;
+    left: 0;
+    background-color: transparent;
+    border: none;
+
+    nav {
+      a {
+        color: #fff;
+      }
+    }
+  }
 
   a.logo {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding: 25px;
+    padding: 22px;
   }
 
   nav {
@@ -77,14 +101,14 @@ header {
         display: inline-flex;
 
         a {
-          color: #fff;
+          color: #4b4b4b;
           font-size: 15px;
           font-weight: 500;
           padding: 30px 10px;
           border-bottom: 2px solid transparent;
 
           &:hover {
-            border-bottom: 2px solid #fff;
+            border-bottom: 2px solid #4b4b4b;
           }
         }
       }
