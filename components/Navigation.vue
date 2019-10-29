@@ -2,6 +2,7 @@
   <header :class="{homepage: isHomePage}">
     <el-row>
       <el-col :span="12">
+        <div class="top-left">
         <a href="#" class="logo">
           <svg
             :width="35"
@@ -17,6 +18,8 @@
             />
           </svg>
         </a>
+        <search v-if="!isHomePage" :search="title" />
+        </div>
       </el-col>
       <el-col :span="12">
         <nav>
@@ -47,12 +50,21 @@
 </template>
 
 <script>
+import Search from '~/components/Search.vue'
+
 export default {
   props: {
     isHomePage: {
       default: false,
       type: Boolean
+    },
+    title: {
+      default: '',
+      type: String
     }
+  },
+  components: {
+    Search
   }
 }
 </script>
@@ -65,6 +77,11 @@ header {
   background-color: #fff;
   z-index: 10;
   border-bottom: 1px solid rgb(228, 228, 228);
+
+  .top-left {
+    display: flex;
+    align-items: center;
+  }
 
   &.homepage {
     position: absolute;
