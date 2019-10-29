@@ -1,3 +1,6 @@
+<!-- Buradaki butonlar copy-paste olduğu için ayrı bir component olarak yapıldı.
+    Login ve register sayfalarındaki sosyal butonlar
+-->
 <template>
   <div>
     <button type="submit" class="_1iwsukp3" aria-busy="false"><span class="_1cjbe3z7"><div class="_jro6t0" style="justify-content: center;"><div class="_rqfxvmb"><div style="margin-right: 12px;"></div></div><div class="_rqfxvmb"><div>Facebook ile giriş yapın</div></div></div></span></button>
@@ -15,6 +18,7 @@ export default {
 }
 </script>
 
+<!-- Stiller direkt airbnb'den alındı -->
 <style lang="scss" scoped>
 ._1iwsukp3 {
   cursor: pointer !important;

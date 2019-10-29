@@ -1,3 +1,8 @@
+<!-- Mock olarak pagination değiştiğinde listelenen veri değişiyor. Server olsaydı her değiştiriğinde serverdan
+  değişen sayfanın verileri alınıp listelenecekti. Ama şuanda herhangi bir endpoint yok.
+
+  emit: parentdaki herhangi bir metodu triggerlamak için kullanılıyor. parenttan childa @clicked propu verildi.
+ -->
 <template>
   <div>
     <div class="pagination" @click="$emit('clicked', false)">

@@ -1,3 +1,7 @@
+<!-- İki tip navigation var: biri anasayfada beyaz renkli linklere sahip ve searchbar yok, diğeri ise kalan bütün
+sayfalarda kullanılan bir navigation. Bunu ayırt etmek için eğer anasayfa ise bir prop gönderip bunu belirtiyorum ve
+buna göre stiller değişiyor.
+ -->
 <template>
 <div>
   <header :class="{homepage: isHomePage}">

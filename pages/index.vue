@@ -101,7 +101,7 @@
 import Navigation from '~/components/Navigation.vue'
 import Hero from '~/components/Hero.vue'
 import Place from '~/components/Place.vue'
-import Recommend from '~/components/Recommend'
+import Recommend from '~/components/Recommend.vue'
 
 import recommends from '~/static/recommends.json'
 import places from '~/static/places.json'
@@ -111,15 +111,23 @@ export default {
     Navigation,
     Hero,
     Place,
-    Recommend
+    Recommend,
   },
   mounted() {
     this.scroll()
+
+    // app initial loading'de loading componentini render ediyor.
+    // yüklenme bitince de finish() metodu ile componenti unmount ediyor.
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+
+      setTimeout(() => this.$nuxt.$loading.finish(), 4000)
+    })
   },
   data() {
     return {
       places: places,
-      recommends
+      recommends,
     }
   },
   methods: {

@@ -1,3 +1,6 @@
+<!-- Navigation'dan altığı search texti kullanıyor. Çünkü girilen herhangi bir sayfada sanki search yapılmış gibi
+  search input dolu olarak geliyor.
+ -->
 <template>
   <div class="search">
     <el-input
