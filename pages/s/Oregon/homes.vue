@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navigation />
+    <navigation title="Oregon" />
     <div>
     <div class="top-filter">
       <div class="filters">
@@ -24,15 +24,25 @@
     <template>
       <section class="results">
         <div class="container">
-          <el-row :gutter="20">
+          <el-row v-if="showMap" :gutter="20">
             <el-col :span="13">
               <h3 style="border-bottom: 1px solid #efefef; padding-bottom: 20px; margin-top: 30px">+300 konaklama yeri</h3>
               <div v-for="(place, index) in places" :key="index">
                 <place :data="place" wide />
               </div>
+              <pagination @clicked="test"/>
             </el-col>
             <el-col :span="11">
               <google-map />
+            </el-col>
+          </el-row>
+          <el-row v-else :gutter="20">
+            <h3 style="margin-top: 30px">+300 konaklama yeri</h3>
+            <el-col v-for="(place, index) in places" :key="index" :span="6">
+              <place :data="place" />
+            </el-col>
+            <el-col v-for="(place, index) in places" :key="index" :span="6">
+              <place :data="place" />
             </el-col>
           </el-row>
         </div>
@@ -46,6 +56,7 @@
 import Navigation from '~/components/Navigation.vue'
 import Place from '~/components/Place.vue'
 import GoogleMap from '~/components/GoogleMap.vue'
+import Pagination from '~/components/Pagination.vue'
 
 // mock data
 import places from '~/static/places.json'
@@ -54,7 +65,8 @@ export default {
   components: {
     Navigation,
     Place,
-    GoogleMap
+    GoogleMap,
+    Pagination
   },
   mounted() {
 
@@ -66,7 +78,9 @@ export default {
     }
   },
   methods: {
-    
+    test () {
+      this.places = this.places.reverse()
+    }
   }
 }
 </script>
