@@ -42,9 +42,9 @@
               <div class="animals-video-context">
                 <h4 style="font-size: 14px; color: #fff; margin-bottom: 20px;">KARŞINIZDA</h4>
                 <h1 style="font-size: 48px; color: #fff">Hayvanlar</h1>
-                <h4
-                  style="font-size: 18px; font-weight: 400; color: #fff; margin-bottom: 40px;"
-                >Airbnb Deneyimleri'nde</h4>
+                <h4 style="font-size: 18px; font-weight: 400; color: #fff; margin-bottom: 40px;">
+                  Airbnb Deneyimleri'nde
+                </h4>
                 <button class="white">Daha fazla bilgi edinin</button>
               </div>
               <video
@@ -103,15 +103,17 @@ import Hero from '~/components/Hero.vue'
 import Place from '~/components/Place.vue'
 import Recommend from '~/components/Recommend.vue'
 
-import recommends from '~/static/recommends.json'
-import places from '~/static/places.json'
-
 export default {
   components: {
     Navigation,
     Hero,
     Place,
-    Recommend,
+    Recommend
+  },
+  created() {
+    // anasayfa olusturulurken api'den gerekli datayi cekiyor
+    this.fetchRecommends()
+    this.fetchPlaces()
   },
   mounted() {
     this.scroll()
@@ -126,8 +128,8 @@ export default {
   },
   data() {
     return {
-      places: places,
-      recommends,
+      places: [],
+      recommends: []
     }
   },
   methods: {
@@ -140,6 +142,14 @@ export default {
           this.places = this.places.concat(places)
         }
       }
+    },
+    async fetchRecommends() {
+      const recommends = await this.$axios.$get('http://localhost:4000/api/recommends')
+      this.recommends = recommends
+    },
+    async fetchPlaces() {
+      const places = await this.$axios.$get('http://localhost:4000/api/places')
+      this.places = places
     }
   }
 }

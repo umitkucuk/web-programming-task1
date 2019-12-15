@@ -2,52 +2,51 @@
   <div>
     <navigation title="Oregon" />
     <div>
-    <div class="top-filter">
-      <div class="filters">
-        <span class="filter">Tarihler</span>
-        <span class="filter">Misafir sayısı</span>
-        <span class="filter">İş seyahati</span>
-        <span class="filter">Yerin yükü</span>
-        <span class="filter">Fiyat</span>
-        <span class="filter">Anında rezervasyon</span>
-        <span class="filter">Daha fazla filtre</span>
-      </div>
-      <div class="toggleMap">
-        Haritayı göster
-        <el-switch
-          v-model="showMap"
-          inactive-color="#b0b0b0">
-        </el-switch>
-      </div>
-    </div>
-    <template>
-      <section class="results">
-        <div class="container">
-          <el-row v-if="showMap" :gutter="20">
-            <el-col :span="13">
-              <h3 style="border-bottom: 1px solid #efefef; padding-bottom: 20px; margin-top: 30px">+300 konaklama yeri</h3>
-              <div v-for="(place, index) in places" :key="index">
-                <place :data="place" wide />
-              </div>
-              <pagination @clicked="test"/>
-            </el-col>
-            <el-col :span="11">
-              <google-map />
-            </el-col>
-          </el-row>
-          <el-row v-else :gutter="20">
-            <h3 style="margin-top: 30px">+300 konaklama yeri</h3>
-            <el-col v-for="(place, index) in places" :key="index" :span="6">
-              <place :data="place" />
-            </el-col>
-            <el-col v-for="(place, index) in places" :key="index" :span="6">
-              <place :data="place" />
-            </el-col>
-          </el-row>
+      <div class="top-filter">
+        <div class="filters">
+          <span class="filter">Tarihler</span>
+          <span class="filter">Misafir sayısı</span>
+          <span class="filter">İş seyahati</span>
+          <span class="filter">Yerin yükü</span>
+          <span class="filter">Fiyat</span>
+          <span class="filter">Anında rezervasyon</span>
+          <span class="filter">Daha fazla filtre</span>
         </div>
-      </section>
-    </template>
-  </div>
+        <div class="toggleMap">
+          Haritayı göster
+          <el-switch v-model="showMap" inactive-color="#b0b0b0"> </el-switch>
+        </div>
+      </div>
+      <template>
+        <section class="results">
+          <div class="container">
+            <el-row v-if="showMap" :gutter="20">
+              <el-col :span="13">
+                <h3 style="border-bottom: 1px solid #efefef; padding-bottom: 20px; margin-top: 30px">
+                  +300 konaklama yeri
+                </h3>
+                <div v-for="(place, index) in places" :key="index">
+                  <place :data="place" wide />
+                </div>
+                <pagination @clicked="test" />
+              </el-col>
+              <el-col :span="11">
+                <google-map />
+              </el-col>
+            </el-row>
+            <el-row v-else :gutter="20">
+              <h3 style="margin-top: 30px">+300 konaklama yeri</h3>
+              <el-col v-for="(place, index) in places" :key="index" :span="6">
+                <place :data="place" />
+              </el-col>
+              <el-col v-for="(place, index) in places" :key="index" :span="6">
+                <place :data="place" />
+              </el-col>
+            </el-row>
+          </div>
+        </section>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -57,9 +56,6 @@ import Place from '~/components/Place.vue'
 import GoogleMap from '~/components/GoogleMap.vue'
 import Pagination from '~/components/Pagination.vue'
 
-// mock data
-import places from '~/static/places.json'
-
 export default {
   components: {
     Navigation,
@@ -67,18 +63,22 @@ export default {
     GoogleMap,
     Pagination
   },
-  mounted() {
-
+  created() {
+    this.fetchPlaces()
   },
   data() {
     return {
       showMap: true,
-      places: places,
+      places: []
     }
   },
   methods: {
-    test () {
+    test() {
       this.places = this.places.reverse()
+    },
+    async fetchPlaces() {
+      const places = await this.$axios.$get('http://localhost:4000/api/places')
+      this.places = places
     }
   }
 }
